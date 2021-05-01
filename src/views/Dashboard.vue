@@ -1,48 +1,58 @@
 <template>
   <div id="dashboard">
-    <AreaChart/>
-    <PieChart/>
-    <BarChart/>
-    <RadarChart/>
-    <LineChart/>
+    <div id="linechart-wrapper">
+      <LineChart id="linechart"/>
+    </div>
+    <Slider id="slider"/>
+    <PieChart />
   </div>
 </template>
 
 <script>
-import AreaChart from "../components/AreaChart.vue";
-import PieChart from "../components/PieChart.vue";
-import BarChart from "../components/BarChart.vue";
-import RadarChart from "../components/RadarChart.vue";
-import LineChart from "../components/LineChart.vue"
+
+import LineChart from '../components/LineChart.vue';
+import PieChart from '../components/PieChart.vue';
+import Slider from '../components/Slider.vue';
+
+import Bootstrap from '../components/Bootstrap.vue';
 
 export default {
   name: "Dashboard",
   components: {
-    AreaChart,
-    PieChart,
-    BarChart,
-    RadarChart,
-    LineChart
+    LineChart, PieChart, Slider, Bootstrap
   },
   data() {
     return {
-      chartData: {
-        Books: 24,
-        Magazine: 30,
-        Newspapers: 10
-      }
+
     };
   }
 };
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+#dashboard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(247, 247, 247);
 }
+
+#linechart-wrapper {
+  padding: 30px;
+  background-color: rgb(255, 255, 255);
+  width: 40%;
+  margin: 30px;
+  border-radius: 20px;
+}
+
+#linechart {
+  width: 100%;
+}
+
+#slider {
+  width: 60%;
+  padding: 40px;
+}
+
 </style>
