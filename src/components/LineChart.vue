@@ -2,6 +2,17 @@
 import { Line } from "vue-chartjs"
 import json from '../data/IndikatorUtangLuarNegeri'
 
+function findId(data, indicator) {
+    var categoryArray = data;
+    for (var i = 0; i < categoryArray.length; i++) {
+        if (categoryArray[i]["Indikator"] == indicator) {
+            return(categoryArray[i]);
+        }
+    }
+}
+
+var dataGraph = findId(json, "Rasio Utang terhadap PDB")
+
 export default {
   extends: Line,
   mounted() {
@@ -25,9 +36,9 @@ export default {
         ],
         datasets: [
           {
-            label: json[6]["Indikator"],
-            data: [json[6]["2007"], json[6]["2008"], json[6]["2009"], json[6]["2010"], json[6]["2011"], json[6]["2012"], json[6]["2013"], 
-                   json[6]["2014"], json[6]["2015"], json[6]["2016"], json[6]["2017"], json[6]["2018"], json[6]["2019"], json[6]["2020"]],
+            label: dataGraph["Indikator"],
+            data: [dataGraph["2007"], dataGraph["2008"], dataGraph["2009"], dataGraph["2010"], dataGraph["2011"], dataGraph["2012"], dataGraph["2013"], 
+                   dataGraph["2014"], dataGraph["2015"], dataGraph["2016"], dataGraph["2017"], dataGraph["2018"], dataGraph["2019"], dataGraph["2020"]],
             backgroundColor: "transparent",
             borderColor: "rgba(1, 116, 188, 0.50)",
             pointBackgroundColor: "rgba(171, 71, 188, 1)"

@@ -1,5 +1,6 @@
 <script>
 import { Pie } from "vue-chartjs";
+import datas from '../data/SektorEkonomi.json'
 
 export default {
   extends: Pie,
@@ -21,11 +22,11 @@ export default {
     this.gradient2.addColorStop(1, "rgba(0, 231, 255, 0)");
     this.renderChart(
       {
-        labels: ["Books", "Magazines", "Newspapers"],
+        labels: datas.map(data => data.Sektor),
         datasets: [
           {
             backgroundColor: [this.gradient, this.gradient2, "#00D8FF"],
-            data: [40, 20, 10]
+            data: datas.map(data => data.Nilai)
           }
         ]
       },
