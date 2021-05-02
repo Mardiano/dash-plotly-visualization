@@ -2,11 +2,12 @@
     <div>
         <div class="grid-container">
             <div class="title text-center">
-                <h3>Utang Luar Negeri Indonesia</h3>
+                <h3>Dashboard</h3>
             </div>
 
-            <div id="naration" class="naration">
-
+            <div id="naration" class="naration text-left p-md-3 text-white">
+                <h2>Utang</h2>
+                <h4>Luar Negeri Indonesia</h4>
             </div>
 
             <div id="mainchart1" class="mainchart1">
