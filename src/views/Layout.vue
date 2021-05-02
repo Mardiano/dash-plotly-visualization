@@ -25,7 +25,9 @@
             </div>
 
             <div class="lainnya">
-                dsdsdds
+                <div id="piechart-wrapper">
+                <PieChart id="negara"/>
+                </div>
             </div>
 
         </div>
@@ -35,12 +37,13 @@
 <script>
 
 import LineChart from '../components/LineChart.vue';
+import PieChart from '../components/PieChart.vue';
 import Slider from '../components/Slider.vue';
 
 export default {
   name: "Layout",
   components: {
-    LineChart, Slider
+    LineChart, PieChart, Slider
   },
   data(){
       return {
