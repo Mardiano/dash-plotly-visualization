@@ -11,18 +11,18 @@ export default {
     // this.gradient2 = this.$refs.canvas
     //   .getContext("2d")
     //   .createLinearGradient(0, 0, 0, 450);
-    var colors = []
-    for (var i = 0; i < datas.length; i++) {
-      var r = Math.floor(Math.random() * 200);
-      var g = Math.floor(Math.random() * 200);
-      var b = Math.floor(Math.random() * 200);
-      var color = 'rgb(' + r + ', ' + g + ', ' + b + ')'
-      colors.push(color)
+    // var colors = []
+    // for (var i = 0; i < datas.length; i++) {
+    //   var r = Math.floor(Math.random() * 200);
+    //   var g = Math.floor(Math.random() * 200);
+    //   var b = Math.floor(Math.random() * 200);
+    //   var color = 'rgb(' + r + ', ' + g + ', ' + b + ')'
+    //   colors.push(color)
       // this.gradient.addColorStop(0, 'rgba(' + r + ', ' + g + ', ' + b + ', 0.5)');
       // this.gradient.addColorStop(0.5, 'rgba(' + r + ', ' + g + ', ' + b + ', 0.25)');
       // this.gradient.addColorStop(1, 'rgba(' + r + ', ' + g + ', ' + b + ', 0)');
       
-    }
+    // }
     // this.gradient.addColorStop(0, "rgba(255, 0,0, 0.5)");
     // this.gradient.addColorStop(0.5, "rgba(255, 0, 0, 0.25)");
     // this.gradient.addColorStop(1, "rgba(255, 0, 0, 0)");
@@ -30,7 +30,7 @@ export default {
     // this.gradient2.addColorStop(0, "rgba(0, 231, 255, 0.9)");
     // this.gradient2.addColorStop(0.5, "rgba(0, 231, 255, 0.25)");
     // this.gradient2.addColorStop(1, "rgba(0, 231, 255, 0)");
-    console.log(colors)
+    // console.log(colors)
     this.renderChart(
       {
         labels: datas.map(data => data.Sektor),
