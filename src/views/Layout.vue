@@ -26,6 +26,9 @@
 
             <div class="lainnya">
                 <CountUp />
+                <div id="piechart-wrapper">
+                <PieChart id="negara"/>
+                </div>
             </div>
 
         </div>
@@ -35,6 +38,7 @@
 <script>
 
 import LineChart from '../components/LineChart.vue';
+import PieChart from '../components/PieChart.vue';
 import Slider from '../components/Slider.vue';
 import CountUp from '../components/CountUp.vue';
 
@@ -42,7 +46,7 @@ import CountUp from '../components/CountUp.vue';
 export default {
   name: "Layout",
   components: {
-    LineChart, Slider, CountUp
+    LineChart, Slider, CountUp, PieChart,
   },
   data(){
       return {
