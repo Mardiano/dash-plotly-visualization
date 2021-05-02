@@ -1,14 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import Layout from '../views/Layout.vue'
+
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/',
+    name: 'Layout',
+    component: Layout
   }
 ]
 

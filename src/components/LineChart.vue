@@ -41,6 +41,7 @@ export default {
                    dataGraph["2014"], dataGraph["2015"], dataGraph["2016"], dataGraph["2017"], dataGraph["2018"], dataGraph["2019"], dataGraph["2020"]],
             backgroundColor: "transparent",
             borderColor: "rgba(1, 116, 188, 0.50)",
+            tension: 0.0,
             pointBackgroundColor: "rgba(171, 71, 188, 1)"
           }
         ]
@@ -48,9 +49,13 @@ export default {
       {
         responsive: true,
         maintainAspectRatio: false,
+        legend: {
+          position: 'bottom'
+        },
         title: {
           display: true,
-          text: "My Data"
+          text: "Rasio Utang Luar Negeri Terhadap PDB",
+          font: { size: 99 }
         }
       }
     );

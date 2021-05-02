@@ -1,0 +1,20 @@
+Buat perbulan, naik apa turun untuk suatu nilai.
+
+Kayak harga currency, kalau lagi turun ada panahnya
+
+bawahnya atau kanannya line chart
+
+
+Diawal ada angka posisi utang indonesia saat ini. 
+
+Trus dibawahnya ada perkembangan dari tahun ke tahun
+posisi sama gdp
+
+Untuk tiap tahun ada posisi utang saat itu, pemasukan pengeluaran
+
+sama track pembayarannya (bayar sama bunga)
+
+
+filter -> hilangin part pemerintah atau ilangin part swasta
+
+Nah tiap tahun ada lampu lalu lintasnya untuk gdp ratio
