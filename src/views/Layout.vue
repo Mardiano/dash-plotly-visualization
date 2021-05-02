@@ -25,7 +25,7 @@
             </div>
 
             <div class="lainnya">
-                dsdsdds
+                <CountUp />
             </div>
 
         </div>
@@ -36,11 +36,13 @@
 
 import LineChart from '../components/LineChart.vue';
 import Slider from '../components/Slider.vue';
+import CountUp from '../components/CountUp.vue';
+
 
 export default {
   name: "Layout",
   components: {
-    LineChart, Slider
+    LineChart, Slider, CountUp
   },
   data(){
       return {
