@@ -55,8 +55,25 @@ export default {
         title: {
           display: true,
           text: "Rasio Utang Luar Negeri Terhadap PDB",
-          font: { size: 99 }
-        }
+          fontSize: 16,
+          padding: 10
+        },
+          scales: {
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Rasio Utang Luar Negeri Terhadap GDP',
+                fontSize: 12
+              }
+            }],
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Tahun',
+                fontSize: 12
+              }
+            }]
+          } 
       }
     );
   }
