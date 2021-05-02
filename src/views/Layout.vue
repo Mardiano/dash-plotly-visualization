@@ -1,15 +1,16 @@
 <template>
     <div>
         <div class="grid-container">
-            <div class="title">
-                Visualisasiasisi
+            <div class="title text-center">
+                <h3>Dashboard</h3>
             </div>
 
-            <div class="naration">
-
+            <div id="naration" class="naration text-left p-md-3 text-white">
+                <h2>Utang</h2>
+                <h4>Luar Negeri Indonesia</h4>
             </div>
 
-            <div class="mainchart1">
+            <div id="mainchart1" class="mainchart1">
                 <div id="linechart-wrapper">
                 <LineChart id="linechart"/>
                 </div>   
@@ -20,7 +21,7 @@
             </div>
 
             <div class="slider">
-                <Slider id="slider" />
+                <Slider id="slider" @childToParent="onChildClick"/>
             </div>
 
             <div class="lainnya">
@@ -40,6 +41,17 @@ export default {
   name: "Layout",
   components: {
     LineChart, Slider
+  },
+  data(){
+      return {
+          year : 2020,
+      }
+  }
+  ,
+  methods: {
+    onChildClick(value) {
+      this.year = value
+    }
   }
 }
 </script>
@@ -51,7 +63,6 @@ export default {
 }
 
 .naration { 
-
     grid-area: naration; 
 }
 
@@ -78,11 +89,11 @@ export default {
         'naration mainchart1 mainchart1 mainchart1 mainchart2 mainchart2 mainchart2'
         'naration slider slider slider slider slider slider'
         'naration lainnya lainnya lainnya lainnya lainnya lainnya';
-    grid-template-columns: 18% 13% 13% 13% 13% 13% 13%;
+    grid-template-columns: 22% 12% 12% 12% 12% 12% 12%;
     grid-template-rows: 60px 370px 100px 300px;
-    padding: 10px;
-    grid-gap: 10px;
-    background-color: #c2ecff;
+    padding: 10px 20px 10px 20px;
+    grid-gap: 15px;
+    background-color: #f1f1f1;
 }
 
 .grid-container > div {
@@ -90,7 +101,7 @@ export default {
     text-align: center;
     font-size: 20px;
     border-radius: 15px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #linechart-wrapper {
@@ -99,6 +110,8 @@ export default {
     width: 520px;
     margin: 10px;
     border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #linechart {
@@ -111,5 +124,14 @@ export default {
     margin-left: auto;
     margin-right: auto;
 }
+
+.title h3 { 
+    margin-top: 10px;
+}
+
+#naration {
+    background-color: rgb(0, 124, 17);
+}
+
 
 </style>
