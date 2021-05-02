@@ -7,7 +7,7 @@ export default {
   mounted() {
     this.renderChart(
       {
-        labels: datas.map(data => data.Sektor),
+        labels: datas.map(data => data["Negara Pemberi Utang"]),
         datasets: [
           {
             // backgroundColor: [this.gradient, this.gradient2, "#00D8FF"],
