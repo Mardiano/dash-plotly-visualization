@@ -39,7 +39,17 @@ export default {
           }
         ]
       },
-      { responsive: true, maintainAspectRatio: false }
+      { responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          position: 'right'
+        },
+        title: {
+          display: true,
+          text: "Lembaga Pemberi Utang Indonesia",
+          fontSize: 16,
+          padding: 10
+        }, }
     );
   }
 };

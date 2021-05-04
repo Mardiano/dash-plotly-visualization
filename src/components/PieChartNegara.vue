@@ -35,14 +35,23 @@ export default {
         labels: dataSector,
         datasets: [
           {
-            // backgroundColor: [this.gradient, this.gradient2, "#00D8FF"],
-            // backgroundColor : colors,
-            backgroundColor : ['#668043', '#25a934', '#1aee49', '#1a038d', '#1ebda0', '#5ea5b1', '#47b5d3', '#72dbf1', '#59aee4', '#d2c25d', '#bd6008', '#f0af64', '#af1f06', '#b9325d', '#66036c', '#d39c9b'],
+            backgroundColor : ['#2a2836', '#668043', '#157444', '#25a934', '#1aee49', '#2ce196', '#1ebda0', '#1a038d', '#5ea5b1', '#47b5d3', '#72dbf1', '#59aee4', '#d2c25d', '#bd6008', '#a31b00', '#d63993', '#f0af64', '#af1f06', '#b9325d', '#66036c', '#d39c9b'],
             data: dataYear
           }
         ]
       },
-      { responsive: true, maintainAspectRatio: false }
+      { responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          position: 'right'
+        },
+        title: {
+          display: true,
+          text: "Negara Pemberi Utang Indonesia",
+          fontSize: 16,
+          padding: 10
+        }, }
+      
     );
   }
 };
