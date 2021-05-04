@@ -71,10 +71,15 @@
             </div>
 
             <div class="lainnya">
-                <!-- <CountUp /> -->
-                <!-- <div id="piechart-wrapper">
-                <PieChart id="negara"/>
-                </div> -->
+                <div id="piechart1-wrapper">
+                <PieChart id="sektor"/>
+                </div>
+                <div id="piechart2-wrapper">
+                <PieChartNegara id="negara"/>
+                </div>
+                <div id="piechart3-wrapper">
+                <PieChartLembaga id="lembaga"/>
+                </div>
             </div>
 
         </div>
@@ -85,6 +90,8 @@
 
 import LineChart from '../components/LineChart.vue';
 import PieChart from '../components/PieChart.vue';
+import PieChartNegara from '../components/PieChartNegara.vue';
+import PieChartLembaga from '../components/PieChartLembaga.vue';
 import Slider from '../components/Slider.vue';
 import CountUp from '../components/CountUp.vue';
 import LineChartPosisi from '../components/LineChartPosisi.vue';
@@ -93,7 +100,7 @@ import LineChartPosisi from '../components/LineChartPosisi.vue';
 export default {
   name: "Layout",
   components: {
-    LineChart, Slider, CountUp, PieChart, LineChartPosisi
+    LineChart, Slider, CountUp, PieChart, LineChartPosisi, PieChartLembaga, PieChartNegara
   },
   data(){
       return {

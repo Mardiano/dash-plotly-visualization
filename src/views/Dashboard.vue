@@ -5,6 +5,8 @@
     </div>
     <Slider id="slider"/>
     <PieChart />
+    <PieChartNegara />
+    <PieChartLembaga />
   </div>
 </template>
 
@@ -12,6 +14,8 @@
 
 import LineChart from '../components/LineChart.vue';
 import PieChart from '../components/PieChart.vue';
+import PieChartNegara from '../components/PieChartNegara.vue';
+import PieChartLembaga from '../components/PieChartLembaga.vue';
 import Slider from '../components/Slider.vue';
 
 import Bootstrap from '../components/Bootstrap.vue';
@@ -19,7 +23,7 @@ import Bootstrap from '../components/Bootstrap.vue';
 export default {
   name: "Dashboard",
   components: {
-    LineChart, PieChart, Slider, Bootstrap
+    LineChart, PieChart, PieChartNegara,PieChartLembaga, Slider, Bootstrap
   },
   data() {
     return {
