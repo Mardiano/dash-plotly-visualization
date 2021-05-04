@@ -6,27 +6,33 @@
             </div>
 
             <div class="information1">
-                <div class="condition">
+                <div v-if="this.dataPosisi[this.year] > this.dataPosisi[this.year-1]" class="condition-increase">
 
+                </div>
+                <div v-else class="condition-decrease">
+                    
                 </div>
                 <div class="value text-left">
                     <h6>Posisi Utang Luar Negeri Indonesia</h6>
                     <div class="format">
                         <h5>$</h5>
-                        <CountUp id="countposisi" :endVal="1256000" :decVal="0" />
+                        <CountUp id="countposisi" :endVal="this.dataPosisi[this.year]" :decVal="0" />
                     </div>
                 </div>
             </div>
 
             <div class="information2">
-                <div class="condition">
+                <div v-if="this.dataIndikator[this.year] > this.dataIndikator[this.year-1]" class="condition-increase">
 
+                </div>
+                <div v-else class="condition-decrease">
+                    
                 </div>
                 <div class="value text-left">
                     <h6>Rasio Utang Luar Negeri Indonesia</h6>
                     <div class="format">
                         <h5>$</h5>
-                        <CountUp id="countposisi" :endVal="393.6" :decVal="2" />
+                        <CountUp id="countposisi" :endVal="this.dataIndikator[this.year]" :decVal="2" />
                     </div>
                 </div>
             </div>
@@ -56,7 +62,7 @@
 
             <div class="slider">
                 <div class="left" id="left">
-                    <b-button variant="outline-primary" @click="decYear(); forceRerender();">Kiri</b-button>
+                    <b-icon id="left-arrow" class="h1" icon="caret-left-fill" @click="decYear(); forceRerender();"></b-icon>
                 </div>
                 <div class="year">
                     <h6>Tahun</h6>
@@ -66,7 +72,7 @@
                     <Slider id="slider" :val="this.year" @childToParent="onChildClick" v-if="renderComponent"/>
                 </div>
                 <div class="right" id="right">
-                    <b-button variant="outline-primary" @click="incYear(); forceRerender();">Kanan</b-button>
+                    <b-icon id="right-arrow" class="h1" icon="caret-right-fill" @click="incYear(); forceRerender();"></b-icon>
                 </div>
             </div>
 
@@ -96,22 +102,35 @@ import Slider from '../components/Slider.vue';
 import CountUp from '../components/CountUp.vue';
 import LineChartPosisi from '../components/LineChartPosisi.vue';
 
+import DataPosisi from "../data/posisi.json"
+import DataIndikator from '../data/IndikatorUtangLuarNegeri'
+
+
 
 export default {
-  name: "Layout",
+    name: "Layout",
   components: {
-    LineChart, Slider, CountUp, PieChart, LineChartPosisi, PieChartLembaga, PieChartNegara
+      LineChart, Slider, CountUp, PieChart, LineChartPosisi, PieChartLembaga, PieChartNegara
   },
   data(){
       return {
           year : 2020,
           renderComponent: true,
+          dataPosisi: this.findData(DataPosisi, "Peminjam", "Total"),
+          dataIndikator: this.findData(DataIndikator, "Indikator", "Rasio Utang terhadap PDB")
       }
-  }
-  ,
+  },
   methods: {
+      findData(data, parameter, indicator){          
+          var categoryArray = data;
+          for (var i = 0; i < categoryArray.length; i++) {
+              if (categoryArray[i][parameter] == indicator) {
+                  return(categoryArray[i]);
+              }
+          }
+    }, 
     onChildClick(value) {
-      this.year = value
+        this.year = value
     },
     decYear() {
         if(this.year > 2007) this.year--;
@@ -122,21 +141,50 @@ export default {
     forceRerender() {
         this.renderComponent = false;
         this.$nextTick(() => {
-          this.renderComponent = true;
+            this.renderComponent = true;
         });
-      }
+    }
+  },
+  mounted(){
+
   }
 }
 </script>
 
 <style lang="css">
 
+#left-arrow {
+    color: rgb(0, 166, 255);
+    margin-top: 24%;
+    width: 70px;
+    height: auto;
+}
+
+#left-arrow :hover {
+    color: rgb(0, 138, 212);
+    cursor: pointer;
+}
+
+#right-arrow {
+    color: rgb(0, 166, 255);
+    margin-top: 24%;
+    width: 70px;
+    height: auto;
+}
+
+#right-arrow :hover {
+    color: rgb(0, 138, 212);
+    cursor: pointer;
+}
+
 .title { 
     grid-area: title; 
+
 }
 
 .naration { 
     grid-area: naration; 
+    user-select: none;
 }
 
 .information1 {
@@ -210,7 +258,7 @@ export default {
         'naration information1 information1 information1 information2 information2 information2'
         'naration lainnya lainnya lainnya lainnya lainnya lainnya';
     grid-template-columns: 22% 12% 12% 12% 12% 12% 12%;
-    grid-template-rows: 60px 410px 150px 140px 300px;
+    grid-template-rows: 70px 410px 150px 140px 300px;
     padding: 20px 20px 20px 20px;
     grid-gap: 15px;
     background-color: #f0f0f0;
@@ -224,8 +272,15 @@ export default {
     border-radius: 15px;
 }
 
-.information1 .condition {
+.information1 .condition-increase {
     background-color: rgb(187, 255, 202);
+    width: 30%;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.information1 .condition-decrease {
+    background-color: rgb(255, 187, 187);
     width: 30%;
     border-radius: 15px;
     margin: 5px;
@@ -235,6 +290,10 @@ export default {
     width: 70%;
     padding: 7px;
     margin: 5px;
+}
+
+.information1 .value h6 {
+    user-select: none;
 }
 
 .information1 .format {
@@ -247,6 +306,7 @@ export default {
     color: rgb(37, 0, 124);
     margin-right: 10px;
     padding-top: 15px;
+    user-select: none;
 }
 
 .information1 .value .format .countposisi {
@@ -255,7 +315,14 @@ export default {
     color: rgb(37, 0, 124);
 }
 
-.information2 .condition {
+.information2 .condition-increase {
+    background-color: rgb(187, 255, 202);
+    width: 30%;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.information2 .condition-decrease {
     background-color: rgb(255, 187, 187);
     width: 30%;
     border-radius: 15px;
@@ -268,6 +335,10 @@ export default {
     margin: 5px;
 }
 
+.information2 .value h6 {
+    user-select: none;
+}
+
 .information2 .format {
     display: flex;
 }
@@ -278,6 +349,7 @@ export default {
     color: rgb(37, 0, 124);
     margin-right: 10px;
     padding-top: 15px;
+    user-select: none;
 }
 
 .information2 .value .format .countposisi {
@@ -311,6 +383,7 @@ export default {
 
 #mainchart1title h6 {
     font-size: 17px;
+    user-select: none;
 }
 
 #mainchart2title {
@@ -323,10 +396,12 @@ export default {
 
 #mainchart2title h6 {
     font-size: 17px;
+    user-select: none;
 }
 
 #mainchart2title h4 {
     font-size: 17px;
+    user-select: none;
 }
 
 #linechart {
@@ -345,6 +420,7 @@ export default {
     margin: 0;
     padding: 0;
     font-size: 30px;
+    user-select: none;
 }
 
 .slider .year h6 {
@@ -352,24 +428,24 @@ export default {
     padding: 0;
     font-size: 16px;
     letter-spacing: 2px;
+    user-select: none;
 }
 
 #left {
-    background-color: rgb(255, 221, 183);
+    background-color: rgb(214, 237, 255);
 }
 
 #right {
-    background-color: rgb(255, 221, 183);
+    background-color: rgb(214, 237, 255);
 }
 
 .title h3 { 
-    margin-top: 10px;
+    margin-top: 18px;
+    user-select: none;
 }
 
 #naration {
     background-color: rgb(0, 89, 172);
-    /* background-color: rgba(0, 124, 17, 1.0); */
-
 }
 
 
