@@ -11,29 +11,34 @@
 
 <script>
   import ICountUp from 'vue-countup-v2';
+
   export default {
     name: 'demo',
     components: {
       ICountUp
     },
+    props: {
+      endVal: Number,
+      decVal: Number
+    },
     data() {
       return {
         delay: 1000,
-        endVal: 120500,
         options: {
           useEasing: true,
           useGrouping: true,
-          separator: ',',
-          decimal: '.',
+          separator: '.',
+          decimal: ',',
           prefix: '',
-          suffix: ''
+          suffix: '',
+          decimalPlaces: this.decVal
         }
       };
     },
     methods: {
       onReady: function(instance, CountUp) {
         const that = this;
-        instance.update(that.endVal + 100);
+        instance.update(that.endVal);
       }
     }
   };
@@ -41,8 +46,14 @@
 
 <style scoped>
   .iCountUp {
-    font-size: 56px;
+    font-size: 46px;
+    font-family: Montserrat;
     margin: 0;
     color: #4d63bc;
+  }
+
+  .iCountUp span {
+    margin: 0;
+    padding: 0;
   }
 </style>

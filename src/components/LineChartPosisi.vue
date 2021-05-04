@@ -1,17 +1,17 @@
 <script>
 import { Line } from "vue-chartjs"
-import json from '../data/IndikatorUtangLuarNegeri'
+import DataPosisi from "../data/posisi.json"
 
 function findId(data, indicator) {
     var categoryArray = data;
     for (var i = 0; i < categoryArray.length; i++) {
-        if (categoryArray[i]["Indikator"] == indicator) {
+        if (categoryArray[i]["Peminjam"] == indicator) {
             return(categoryArray[i]);
         }
     }
 }
 
-var dataGraph = findId(json, "Rasio Utang terhadap PDB")
+var dataGraph = findId(DataPosisi, "Total");
 
 export default {
   extends: Line,
@@ -36,11 +36,11 @@ export default {
         ],
         datasets: [
           {
-            label: dataGraph["Indikator"],
+            label: "Posisi ULN Indonesia",
             data: [dataGraph["2007"], dataGraph["2008"], dataGraph["2009"], dataGraph["2010"], dataGraph["2011"], dataGraph["2012"], dataGraph["2013"], 
                    dataGraph["2014"], dataGraph["2015"], dataGraph["2016"], dataGraph["2017"], dataGraph["2018"], dataGraph["2019"], dataGraph["2020"]],
             backgroundColor: "transparent",
-            borderColor: "rgba(255, 196, 1, 0.5)",
+            borderColor: "rgba(1, 116, 188, 0.50)",
             tension: 0.0,
             pointBackgroundColor: "rgba(171, 71, 188, 1)"
           }
@@ -54,7 +54,7 @@ export default {
         },
         title: {
           display: false,
-          text: "Rasio Utang Luar Negeri Terhadap PDB",
+          text: "Posisi Utang Luar Negeri Indonesia",
           fontSize: 16,
           padding: 10
         },
@@ -62,7 +62,7 @@ export default {
             yAxes: [{
               scaleLabel: {
                 display: true,
-                labelString: 'Rasio Utang Luar Negeri Terhadap GDP',
+                labelString: 'Posisi Utang Luar Negeri Indonesia',
                 fontSize: 12
               }
             }],
@@ -83,11 +83,3 @@ export default {
   }
 };
 </script>
-
-<style lang="css">
-
-.testing {
-  background-color: rgb(255, 196, 1);
-}
-  
-</style>

@@ -5,7 +5,8 @@
         :adsorb="true"
         :data="data"
         :marks="true"
-         @change="emitToParent"
+        v-bind="options"
+        @change="emitToParent"
       ></vue-slider>
     </div>
 </template>
@@ -13,10 +14,17 @@
 
 <script>
 export default {
+  props: {
+    val: Number
+  },
   data: function () {
     return {
-      value: 2020,
-      data: [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
+      value: this.val,
+      data: [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
+      options: {
+        tooltip: 'active',
+        tooltipPlacement: 'bottom'
+      }
     }
   },
   methods: {
