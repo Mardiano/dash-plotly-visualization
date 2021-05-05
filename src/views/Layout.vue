@@ -85,6 +85,11 @@
                 <div id="sidecharttitle">
                     <h6>Proporsi Sumber ULN</h6>
                 </div>
+                <div id="barchart-wrapper">
+                    <div id='pie-chart-ratio'>
+                        <PieChartRasioPemberiUtang v-if="renderComponent" :theyear="this.year" />
+                    </div>
+                </div>
             </div>
 
             <div class="yearly1">
@@ -94,15 +99,6 @@
                 <div id="barchart-wrapper">
                     <BarChart v-if="renderComponent" :theyear="this.year" />
                 </div>
-                <!-- <div id="piechart1-wrapper">
-                <PieChart id="sektor"/>
-                </div>
-                <div id="piechart2-wrapper">
-                <PieChartNegara id="negara"/>
-                </div>
-                <div id="piechart3-wrapper">
-                <PieChartLembaga id="lembaga"/>
-                </div> -->
             </div>
 
             <div class="yearly2">
@@ -137,6 +133,7 @@ import BarChartPenggunaan from '../components/BarChartPenggunaan.vue';
 import PieChart from '../components/PieChart.vue';
 import PieChartNegara from '../components/PieChartNegara.vue';
 import PieChartLembaga from '../components/PieChartLembaga.vue';
+import PieChartRasioPemberiUtang from '../components/PieChartRasioPemberiUtang.vue';
 import Slider from '../components/Slider.vue';
 import CountUp from '../components/CountUp.vue';
 import LineChartPosisi from '../components/LineChartPosisi.vue';
@@ -149,7 +146,7 @@ import DataIndikator from '../data/IndikatorUtangLuarNegeri'
 export default {
     name: "Layout",
   components: {
-      LineChart, Slider, CountUp, PieChart, LineChartPosisi, PieChartLembaga, PieChartNegara, BarChart, BarChartLembaga, BarChartPenggunaan
+      LineChart, Slider, CountUp, PieChart, PieChartRasioPemberiUtang, LineChartPosisi, PieChartLembaga, PieChartNegara, BarChart, BarChartLembaga, BarChartPenggunaan
   },
   data(){
       return {
@@ -514,7 +511,11 @@ export default {
     width: 100%;
     height: 330px;
 }
-    
+
+#pie-chart-ratio {
+    width: 100%;
+}
+
 #slider {
     width: 90%;
     margin-left: auto;
