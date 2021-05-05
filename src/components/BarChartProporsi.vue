@@ -1,6 +1,6 @@
 <script>
 import { HorizontalBar } from "vue-chartjs";
-import datas from '../data/LembagaPemberiUtang.json'
+import datas from '../data/NegaraPemberiUtang.json'
 
 function sortData(dataSector, dataYear, dataColor){
   var yearSorted = dataYear
@@ -37,11 +37,11 @@ export default {
   },
   mounted() {
     console.log(this.year)
-    let dataSector = datas.map(data => data["Lembaga Pemberi Hutang"])
+    let dataSector = datas.map(data => data["Negara Pemberi Utang"])
     let dataYear = datas.map(data => data[this.year])
     let dataColorr = this.dataColor;
     let values = sortData(dataSector, dataYear, dataColorr)
-    let dataColorSorted = this.dataColor.slice(0, 6)
+    let dataColorSorted = values[2].slice(0, 6)
     dataSector = values[1].slice(0, 6)
     dataYear =  values[0].slice(0, 6)
 
@@ -50,21 +50,20 @@ export default {
         labels: dataSector,
         datasets: [
           {
-            label:["1", "2", "3"],
             backgroundColor : dataColorSorted,
             data: dataYear
           }
         ]
       },
       { 
-        responsive: true, maintainAspectRatio: false, 
+        responsive: true,
         maintainAspectRatio: true,
         legend: {
           display: false
         },
         title: {
           display: false,
-          text: "Lembaga Pemberi Utang Indonesia",
+          text: "Negara Pemberi Utang Indonesia",
           fontSize: 16,
           padding: 10
         },
@@ -75,7 +74,7 @@ export default {
             },
             scaleLabel: {
               display: true,
-              labelString: 'Lembaga Internasional',
+              labelString: 'Negara',
               fontSize: 12,
             }
           }],
@@ -87,18 +86,17 @@ export default {
             },
             ticks: {
                 beginAtZero: true,
-                  stepSize: 5000,
+                  stepSize: 10000,
                   min: 0,
-                  max: 20000,
-                  maxRotation: 45,
-                  minRotation: 45
+                  max: 70000
             }
           }]
         },
         layout: {
             padding: 10
         } 
-      }
+      },
+      200
     );
   }
 };

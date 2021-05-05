@@ -22,6 +22,15 @@ function sortData(dataSector, dataYear){
 
 export default {
   extends: Pie,
+  props: {
+    theyear: Number
+  },
+  data(){
+    return {
+      year: this.theyear,
+      dataColor: ['#668043', '#25a934', '#1aee49', '#1a038d', '#1ebda0', '#5ea5b1', '#47b5d3', '#72dbf1', '#59aee4', '#d2c25d', '#bd6008', '#f0af64', '#450c27', '#66036c', '#af1f06', '#b9325d', '#d39c9b'],
+    }
+  },
   mounted() {
     let year = "2020"
     let dataSector = datas.map(data => data.Sektor)
@@ -40,17 +49,20 @@ export default {
           }
         ]
       },
-      { responsive: true,
+      { 
+        responsive: true,
         maintainAspectRatio: false,
         legend: {
-          position: 'top'
+          display: false
         },
         title: {
-          display: true,
+          display: false,
           text: "Sektor Pemakaian Dana Utang Indonesia",
           fontSize: 16,
           padding: 10
-        }, }
+        }
+        
+      }
     );
   }
 };

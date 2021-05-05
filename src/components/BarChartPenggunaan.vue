@@ -41,7 +41,7 @@ export default {
     let dataYear = datas.map(data => data[this.year])
     let dataColorr = this.dataColor;
     let values = sortData(dataSector, dataYear, dataColorr)
-    let dataColorSorted = values[2].slice(0, 6)
+    let dataColorSorted = this.dataColor.slice(0, 6)
     dataSector = values[1].slice(0, 6)
     dataYear =  values[0].slice(0, 6)
 
