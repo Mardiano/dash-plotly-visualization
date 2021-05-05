@@ -29,7 +29,8 @@ export default {
   },
   methods: {
     emitToParent (event) {
-      this.$emit('childToParent', this.value)
+      this.$emit('childToParent', this.value);
+      this.$emit('update');
     }
   }
   

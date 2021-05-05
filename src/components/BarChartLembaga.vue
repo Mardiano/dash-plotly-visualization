@@ -1,6 +1,6 @@
 <script>
 import { HorizontalBar } from "vue-chartjs";
-import datas from '../data/NegaraPemberiUtang.json'
+import datas from '../data/LembagaPemberiUtang.json'
 
 function sortData(dataSector, dataYear, dataColor){
   var yearSorted = dataYear
@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     console.log(this.year)
-    let dataSector = datas.map(data => data["Negara Pemberi Utang"])
+    let dataSector = datas.map(data => data["Lembaga Pemberi Hutang"])
     let dataYear = datas.map(data => data[this.year])
     let dataColorr = this.dataColor;
     let values = sortData(dataSector, dataYear, dataColorr)
@@ -57,14 +57,14 @@ export default {
         ]
       },
       { 
-        responsive: true,
+        responsive: true, maintainAspectRatio: false, 
         maintainAspectRatio: true,
         legend: {
           display: false
         },
         title: {
           display: false,
-          text: "Negara Pemberi Utang Indonesia",
+          text: "Lembaga Pemberi Utang Indonesia",
           fontSize: 16,
           padding: 10
         },
@@ -75,7 +75,7 @@ export default {
             },
             scaleLabel: {
               display: true,
-              labelString: 'Negara',
+              labelString: 'Lembaga Internasional',
               fontSize: 12,
             }
           }],
@@ -87,17 +87,18 @@ export default {
             },
             ticks: {
                 beginAtZero: true,
-                  stepSize: 10000,
+                  stepSize: 5000,
                   min: 0,
-                  max: 70000
+                  max: 20000,
+                  maxRotation: 45,
+                  minRotation: 45
             }
           }]
         },
         layout: {
             padding: 10
         } 
-      },
-      200
+      }
     );
   }
 };

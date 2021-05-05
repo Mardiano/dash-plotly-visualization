@@ -6,33 +6,38 @@
             </div>
 
             <div class="information1">
-                <div v-if="this.dataPosisi[this.year] > this.dataPosisi[this.year-1]" class="condition-increase">
+                <div v-if="this.dataPosisi[this.year] > this.dataPosisi[this.year-1]" class="condition-decrease text-left">
+                    <b-icon id="up-arrow" class="h1" icon="chevron-double-up"></b-icon>
+                </div>
 
+                <div v-else class="condition-increase text-left">
+                    <b-icon id="down-arrow" class="h1" icon="chevron-double-down" ></b-icon> 
                 </div>
-                <div v-else class="condition-decrease">
-                    
-                </div>
+                
                 <div class="value text-left">
                     <h6>Posisi Utang Luar Negeri Indonesia</h6>
                     <div class="format">
                         <h5>$</h5>
                         <CountUp id="countposisi" :endVal="this.dataPosisi[this.year]" :decVal="0" />
+                        <h5 id="persen">Juta</h5>
                     </div>
                 </div>
             </div>
 
             <div class="information2">
-                <div v-if="this.dataIndikator[this.year] > this.dataIndikator[this.year-1]" class="condition-increase">
+                <div v-if="this.dataIndikator[this.year] > this.dataIndikator[this.year-1]" class="condition-decrease text-left">
+                    <b-icon  v-if="this.dataIndikator[this.year] > this.dataIndikator[this.year-1]" id="up-arrow" class="h1" icon="chevron-double-up"></b-icon>
+                </div>
 
+                <div v-if="this.dataIndikator[this.year] <= this.dataIndikator[this.year-1]" class="condition-increase text-left">
+                    <b-icon v-if="this.dataIndikator[this.year] <= this.dataIndikator[this.year-1]" id="down-arrow" class="h1" icon="chevron-double-down" ></b-icon> 
                 </div>
-                <div v-else class="condition-decrease">
-                    
-                </div>
+
                 <div class="value text-left">
                     <h6>Rasio Utang Luar Negeri Indonesia</h6>
                     <div class="format">
-                        <h5>$</h5>
                         <CountUp id="countposisi" :endVal="this.dataIndikator[this.year]" :decVal="2" />
+                        <h5 id="persen">%</h5>
                     </div>
                 </div>
             </div>
@@ -69,15 +74,27 @@
                     <h4>{{ year }}</h4>
                 </div>
                 <div class="sliderarea">
-                    <Slider id="slider" :val="this.year" @childToParent="onChildClick" v-if="renderComponent"/>
+                    <Slider id="slider" :val="this.year" @childToParent="onChildClick" v-if="renderComponent" @update="updatePun"/>
                 </div>
                 <div class="right" id="right">
                     <b-icon id="right-arrow" class="h1" icon="caret-right-fill" @click="incYear(); forceRerender();"></b-icon>
                 </div>
             </div>
 
-            <div class="lainnya">
-                <div id="piechart1-wrapper">
+            <div class="proporsi">
+                <div id="sidecharttitle">
+                    <h6>Proporsi Sumber ULN</h6>
+                </div>
+            </div>
+
+            <div class="yearly1">
+                <div id="sidecharttitle">
+                    <h6>6 Besar Negara Pemberi Utang</h6>
+                </div>
+                <div id="barchart-wrapper">
+                    <BarChart v-if="renderComponent" :theyear="this.year" />
+                </div>
+                <!-- <div id="piechart1-wrapper">
                 <PieChart id="sektor"/>
                 </div>
                 <div id="piechart2-wrapper">
@@ -85,6 +102,25 @@
                 </div>
                 <div id="piechart3-wrapper">
                 <PieChartLembaga id="lembaga"/>
+                </div> -->
+            </div>
+
+            <div class="yearly2">
+                <div id="sidecharttitle">
+                    <h6>6 Besar Lembaga Internasional Pemberi Utang</h6>
+                </div>
+                <div id="barchart-wrapper">
+                    <BarChartLembaga v-if="renderComponent" :theyear="this.year" />
+                </div>
+            </div>
+
+            <div class="yearly3">
+                <div id="sidecharttitle">
+                    <h6>6 Besar Sektor Pemanfaatan Utang Indonesia</h6>
+                </div>
+                <br>
+                <div id="SektorBar">
+                    <BarChartPenggunaan v-if="renderComponent" :theyear="this.year" />
                 </div>
             </div>
 
@@ -95,6 +131,9 @@
 <script>
 
 import LineChart from '../components/LineChart.vue';
+import BarChart from '../components/BarChart.vue';
+import BarChartLembaga from '../components/BarChartLembaga.vue';
+import BarChartPenggunaan from '../components/BarChartPenggunaan.vue';
 import PieChart from '../components/PieChart.vue';
 import PieChartNegara from '../components/PieChartNegara.vue';
 import PieChartLembaga from '../components/PieChartLembaga.vue';
@@ -110,7 +149,7 @@ import DataIndikator from '../data/IndikatorUtangLuarNegeri'
 export default {
     name: "Layout",
   components: {
-      LineChart, Slider, CountUp, PieChart, LineChartPosisi, PieChartLembaga, PieChartNegara
+      LineChart, Slider, CountUp, PieChart, LineChartPosisi, PieChartLembaga, PieChartNegara, BarChart, BarChartLembaga, BarChartPenggunaan
   },
   data(){
       return {
@@ -132,6 +171,10 @@ export default {
     onChildClick(value) {
         this.year = value
     },
+
+    updatePun(){
+        this.forceRerender();
+    },
     decYear() {
         if(this.year > 2007) this.year--;
     },
@@ -152,6 +195,28 @@ export default {
 </script>
 
 <style lang="css">
+
+#sektorBar {
+    width: 300px;
+}
+
+#persen {
+    margin-left: 10px;
+}
+
+#up-arrow {
+    color: rgb(248, 141, 0);
+    width: 63px;
+    height: auto;
+    margin: 10px 10px 10px 15px;
+}
+
+#down-arrow {
+    color: rgb(0, 199, 0);
+    width: 63px;
+    height: auto;
+    margin: 10px 10px 10px 15px;
+}
 
 #left-arrow {
     color: rgb(0, 166, 255);
@@ -245,8 +310,24 @@ export default {
     padding: 5px;
 }
 
-.lainnya { 
-    grid-area: lainnya; 
+.proporsi { 
+    grid-area: proporsi; 
+    padding: 10px;
+}
+
+.yearly1 { 
+    grid-area: yearly1; 
+    padding: 10px;
+}
+
+.yearly2 { 
+    grid-area: yearly2; 
+    padding: 10px;
+}
+
+.yearly3 { 
+    grid-area: yearly3; 
+    padding: 10px;
 }
 
 .grid-container {
@@ -256,9 +337,10 @@ export default {
         'naration mainchart1 mainchart1 mainchart1 mainchart2 mainchart2 mainchart2'
         'naration slider slider slider slider slider slider'
         'naration information1 information1 information1 information2 information2 information2'
-        'naration lainnya lainnya lainnya lainnya lainnya lainnya';
+        'naration proporsi proporsi yearly1 yearly1 yearly2 yearly2'
+        'naration yearly3 yearly3 yearly3 yearly3 yearly3 yearly3';
     grid-template-columns: 22% 12% 12% 12% 12% 12% 12%;
-    grid-template-rows: 70px 410px 150px 140px 300px;
+    grid-template-rows: 70px 410px 150px 140px 410px 490px;
     padding: 20px 20px 20px 20px;
     grid-gap: 15px;
     background-color: #f0f0f0;
@@ -273,14 +355,14 @@ export default {
 }
 
 .information1 .condition-increase {
-    background-color: rgb(187, 255, 202);
+    background-color: rgb(152, 255, 174);
     width: 30%;
     border-radius: 15px;
     margin: 5px;
 }
 
 .information1 .condition-decrease {
-    background-color: rgb(255, 187, 187);
+    background-color: rgb(255, 207, 118);
     width: 30%;
     border-radius: 15px;
     margin: 5px;
@@ -303,7 +385,7 @@ export default {
 .information1 .value .format h5 {
     font-family: Montserrat;
     font-weight: 900;
-    color: rgb(37, 0, 124);
+    color: rgb(0, 25, 165);
     margin-right: 10px;
     padding-top: 15px;
     user-select: none;
@@ -316,14 +398,14 @@ export default {
 }
 
 .information2 .condition-increase {
-    background-color: rgb(187, 255, 202);
+    background-color: rgb(152, 255, 174);
     width: 30%;
     border-radius: 15px;
     margin: 5px;
 }
 
 .information2 .condition-decrease {
-    background-color: rgb(255, 187, 187);
+    background-color: rgb(255, 207, 118);
     width: 30%;
     border-radius: 15px;
     margin: 5px;
@@ -346,7 +428,7 @@ export default {
 .information2 .value .format h5 {
     font-family: Montserrat;
     font-weight: 900;
-    color: rgb(37, 0, 124);
+    color: rgb(0, 25, 165);
     margin-right: 10px;
     padding-top: 15px;
     user-select: none;
@@ -366,6 +448,17 @@ export default {
     border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
+}
+
+#barchart-wrapper {
+    padding: 10px 10px 10px 0;
+    background-color: rgb(255, 255, 255);
+    width: 355px !important;
+    height: 200px !important;
+    margin: 0;
+    border-radius: 20px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #title {
@@ -401,6 +494,19 @@ export default {
 
 #mainchart2title h4 {
     font-size: 17px;
+    user-select: none;
+}
+
+#sidecharttitle {
+    height: 40px;
+    width: 100%;
+    border-radius: 12px;
+    padding-top: 9px;
+    background-color: rgb(214, 237, 255);
+}
+
+#sidecharttitle h6 {
+    font-size: 14px;
     user-select: none;
 }
 

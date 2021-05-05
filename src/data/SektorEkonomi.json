@@ -116,7 +116,7 @@
     "2018": 9677,
     "2019": 8859,
     "2020": 8806,
-    "Sektor": "Administrasi Pemerintah, Pertahanan, dan Jaminan Sosial Wajib"
+    "Sektor": "Administrasi Pemerintahan"
   },
   {
     "2007": 3359,
@@ -150,7 +150,7 @@
     "2018": 550,
     "2019": 531,
     "2020": 560,
-    "Sektor": "Pertanian, Peternakan, Kehutanan & Perikanan"
+    "Sektor": "Agrisektor"
   },
   {
     "2007": 4795,
@@ -167,24 +167,7 @@
     "2018": 8182,
     "2019": 6018,
     "2020": 6547,
-    "Sektor": "Perdagangan Besar dan Eceran, Reparasi Mobil dan Sepeda Motor"
-  },
-  {
-    "2007": 23223,
-    "2008": 23721,
-    "2009": 32278,
-    "2010": 40604,
-    "2011": 39609,
-    "2012": 48811,
-    "2013": 5536,
-    "2014": 59985,
-    "2015": 67882,
-    "2016": 66889,
-    "2017": 68346,
-    "2018": 75871,
-    "2019": 78538,
-    "2020": 72138,
-    "Sektor": "Jasa Lainnya"
+    "Sektor": "Perdagangan dan Reparasi Kendaraan"
   },
   {
     "2007": 2422,
@@ -235,7 +218,7 @@
     "2018": 25561,
     "2019": 30791,
     "2020": 24603,
-    "Sektor": "Pengelolaan Air, Pengelolaan Air Limbah, Pengelolaan dan Daur Ulang Sampah, dan Aktivitas Remediasi"
+    "Sektor": "Pengelolaan Air, Limbah, dan Sampah"
   },
   {
     "2007": 3273,
@@ -269,7 +252,7 @@
     "2018": 34419,
     "2019": 38547,
     "2020": 49514,
-    "Sektor": "Pengadaan Listrik, Gas, Uap Air Panas, dan Udara"
+    "Sektor": "Pengadaan Energi"
   },
   {
     "2007": 17068,
@@ -286,6 +269,6 @@
     "2018": 10286,
     "2019": 8677,
     "2020": 8359,
-    "Sektor": "Penyediaan akomodasi dan penyediaan makan minum"
+    "Sektor": "Penyediaan Akomodasi"
   }
 ]

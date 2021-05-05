@@ -64,6 +64,12 @@ export default {
                 display: true,
                 labelString: 'Rasio Utang Luar Negeri Terhadap GDP',
                 fontSize: 12
+              },
+              ticks: {
+                  beginAtZero: true,
+                    stepSize: 5,
+                    min: 0,
+                    max: 45
               }
             }],
             xAxes: [{

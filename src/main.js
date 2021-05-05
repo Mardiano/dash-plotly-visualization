@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'vue-slider-component/dist-css/vue-slider-component.css';
 import 'vue-slider-component/theme/default.css';
+import 'vue2-animate/dist/vue2-animate.min.css';
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);

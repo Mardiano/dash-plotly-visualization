@@ -58,26 +58,32 @@ export default {
           fontSize: 16,
           padding: 10
         },
-          scales: {
-            yAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: 'Posisi Utang Luar Negeri Indonesia',
-                fontSize: 12
-              }
-            }],
-            xAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: 'Tahun',
-                fontSize: 12
-              },
-              ticks: {
-                    maxRotation: 30,
-                    minRotation: 30
-              }
-            }]
-          } 
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Posisi Utang Luar Negeri Indonesia',
+              fontSize: 12
+            },
+            ticks: {
+                beginAtZero: true,
+                  stepSize: 50000,
+                  min: 0,
+                  max: 450000
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Tahun',
+              fontSize: 12
+            },
+            ticks: {
+                  maxRotation: 30,
+                  minRotation: 30
+            }
+          }]
+        } 
       }
     );
   }

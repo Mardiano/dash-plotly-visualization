@@ -19,7 +19,7 @@
     },
     props: {
       endVal: Number,
-      decVal: Number
+      decVal: Number,
     },
     data() {
       return {

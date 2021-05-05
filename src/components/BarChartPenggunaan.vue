@@ -1,6 +1,6 @@
 <script>
 import { HorizontalBar } from "vue-chartjs";
-import datas from '../data/NegaraPemberiUtang.json'
+import datas from '../data/SektorEkonomi.json'
 
 function sortData(dataSector, dataYear, dataColor){
   var yearSorted = dataYear
@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     console.log(this.year)
-    let dataSector = datas.map(data => data["Negara Pemberi Utang"])
+    let dataSector = datas.map(data => data.Sektor)
     let dataYear = datas.map(data => data[this.year])
     let dataColorr = this.dataColor;
     let values = sortData(dataSector, dataYear, dataColorr)
@@ -50,21 +50,20 @@ export default {
         labels: dataSector,
         datasets: [
           {
-            label:["1", "2", "3"],
             backgroundColor : dataColorSorted,
             data: dataYear
           }
         ]
       },
       { 
-        responsive: true,
-        maintainAspectRatio: true,
+        responsive: true, maintainAspectRatio: false, 
+        maintainAspectRatio: false,
         legend: {
           display: false
         },
         title: {
           display: false,
-          text: "Negara Pemberi Utang Indonesia",
+          text: "Sektor Pemanfaatan Utang Indonesia",
           fontSize: 16,
           padding: 10
         },
@@ -74,8 +73,8 @@ export default {
                scale.width = 90
             },
             scaleLabel: {
-              display: true,
-              labelString: 'Negara',
+              display: false,
+              labelString: 'Sektor',
               fontSize: 12,
             }
           }],
@@ -87,17 +86,20 @@ export default {
             },
             ticks: {
                 beginAtZero: true,
-                  stepSize: 10000,
+                  stepSize: 5000,
                   min: 0,
-                  max: 70000
+                  max: 50000,
+                  maxRotation: 45,
+                  minRotation: 45
             }
           }]
         },
         layout: {
-            padding: 10
+            padding: {
+                left: 130
+            }
         } 
-      },
-      200
+      }
     );
   }
 };
