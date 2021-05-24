@@ -1,5 +1,5 @@
 <template>
-    <div id="wrapper">
+    <div id="wrapper" @keyup.left="decYear(); forceRerender();">
         <div class="grid-container">
             <div id="title" class="title text-center">
                 <h3>Dashboard</h3>
@@ -45,6 +45,9 @@
             <div id="naration" class="naration text-left p-md-3 text-white">
                 <h2>Utang</h2>
                 <h4>Luar Negeri Indonesia</h4>
+                <a href="https://www.bi.go.id/en/statistik/ekonomi-keuangan/sulni/Pages/SULNI-April-2021.aspx" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none;">
+                    <h6 id="sumber">Sumber : Website Bank Indonesia</h6>
+                </a>
             </div>
 
             <div id="mainchart1" class="mainchart1">
@@ -67,7 +70,7 @@
 
             <div class="slider">
                 <div class="left" id="left">
-                    <b-icon id="left-arrow" class="h1" icon="caret-left-fill" @click="decYear(); forceRerender();"></b-icon>
+                    <b-icon id="left-arrow" class="h1" icon="caret-left-fill" @click="decYear(); forceRerender();" @keyup.left="decYear(); forceRerender();"></b-icon>
                 </div>
                 <div class="year">
                     <h6>Tahun</h6>
@@ -192,6 +195,10 @@ export default {
 </script>
 
 <style lang="css">
+
+#sumber {
+    margin-top: 1610px;
+}
 
 #sektorBar {
     width: 300px;
